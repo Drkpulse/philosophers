@@ -1,6 +1,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 typedef struct rules
 {
@@ -12,3 +13,11 @@ typedef struct rules
 	int	gone;
 
 }	t_rules;
+
+typedef struct s_philo {
+    int id;
+    long last_meal_time;
+    int meals_eaten;
+    t_rules *rules;
+    pthread_t thread;
+} t_philo;
