@@ -1,20 +1,25 @@
 #include "philo.h"
 
-void	start_rules(t_rules *rules,char** argv)
+
+int	philosophers(int argc, char **argv)
 {
-	rules->n_philo = ft_atoi(argv[1]);
-	rules->time_death = ft_atoi(argv[2]);
-	rules->time_eat= ft_atoi(argv[3]);
-	rules->time_sleep= ft_atoi(argv[4]);
-	if(argv[5])
-		rules->num_eat = ft_atoi(argv[5]);
+	t_rules rules;
+
+	if(start_rules(&rules, argv, argc))
+		return (1);
+	//init_philo();
+	//Forks;
+	//Threads
+	//join_threads
+	//free everything
+	return (0);
 }
 
 int main(int argc, char **argv)
 {
-	t_rules rules;
-
 	if (check_input(argc, argv))
 		return(bad_input());
-	//start_rules(&rules, argv);
+	if (philosophers(argc, argv))
+		return (1);
+	return (0);
 }
