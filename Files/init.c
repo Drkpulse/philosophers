@@ -13,6 +13,14 @@ int	malloc_rules(t_rules *rules)
 		return (free(rules->philos), free(rules->forks), (1));
 	return (0);
 }
+void	mutex_init_rules(t_rules *rules)
+{
+	pthread_mutex_init(&rules->mut_time_eat, NULL);
+	pthread_mutex_init(&rules->mut_time_death, NULL);
+	pthread_mutex_init(&rules->mut_time_sleep, NULL);
+	pthread_mutex_init(&rules->mut_n_philos, NULL);
+	pthread_mutex_init(&rules->mut_time_start, NULL);
+}
 
 int	start_rules(t_rules *rules,char** argv, int argc)
 {
@@ -24,6 +32,6 @@ int	start_rules(t_rules *rules,char** argv, int argc)
 	rules->num_eat = -1;
 	if(argc == 6)
 		rules->num_eat = ft_atoi(argv[5]);
-
+	mutex_init_rules(rules);
 	return (malloc_rules(rules));
 }
