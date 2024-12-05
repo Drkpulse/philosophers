@@ -23,13 +23,13 @@ typedef enum e_state
 
 typedef struct s_rules
 {
-	int			n_philo;
-	u_int64_t	time_death;
-	u_int64_t	time_eat;
-	u_int64_t	time_sleep;
-	u_int64_t	time_start;
-	int			num_philo_full;
-	int			num_eat;
+	int				n_philo;
+	u_int64_t		time_death;
+	u_int64_t		time_eat;
+	u_int64_t		time_sleep;
+	u_int64_t		time_start;
+	int				num_philo_full;
+	int				num_eat;
 	pthread_mutex_t	mut_time_eat;
 	pthread_mutex_t	mut_time_death;
 	pthread_mutex_t	mut_time_sleep;
@@ -39,20 +39,21 @@ typedef struct s_rules
 	pthread_t		monit_all_full;
 	pthread_t		*philo_threads;
 	pthread_mutex_t	*forks;
-	t_philo		*philos;
+	t_philo			*philos;
 }				t_rules;
 
 typedef struct s_philo {
-	int			id;
-	t_state		state;
-	t_rules		*rules;
+	int				id;
+	t_state			state;
+	t_rules			*rules;
 	pthread_mutex_t	*left_f;
 	pthread_mutex_t	*right_f;
 	pthread_mutex_t	mut_state;
 	pthread_mutex_t	mut_meals_eaten;
 	pthread_mutex_t	mut_last_meal_time;
-	int			meals_eaten;
-	u_int64_t	last_meal_time;
+	bool			is_alive;
+	int				meals_eaten;
+	u_int64_t		last_meal_time;
 }				t_philo;
 
 // INPUT VALIDATIONS FUNCTIONS
