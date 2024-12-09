@@ -1,5 +1,46 @@
 #include "philo.h"
 
+int	start_forks(t_rules *rules)
+{
+	t_philo	*philos;
+	int		i;
+
+	i = 0;
+	philos = rules->philos;
+	while(i < rules->n_philo - 1)
+		pthread_mutex_init(&rules->forks[i], NULL);
+	i = 0;
+	philos[0].left_f = &rules->forks[0];
+	philos[0].right_f = &rules->forks[rules->n_philo - 1];
+	i++;
+	while (i < rules->n_philo)
+	{
+		philos[i].left_f = &rules->forks[i];
+		philos[i].right_f = &rules->forks[i - 1];
+	}
+	return (0);
+}
+
+int	start_philos(t_rules *rules)
+{
+	t_philo	*philos;
+	int		i;
+
+	i = 0;
+	philos = rules->philos;
+	while(i < rules->n_philo - 1)
+	{
+		philos[i].rules = rules;
+		philos[i].id = i;
+		philos[i].state = IDLE;
+		philos[i].meals_eaten = 0;
+		pthread_mutex_init(&philos[i].mut_state, NULL);
+		pthread_mutex_init(&philos[i].mut_meals_eaten, NULL);
+		pthread_mutex_init(&philos[i].mut_last_meal_time, NULL);
+		update_last_meal_time(&philos[i]);
+	}
+}
+
 int	malloc_rules(t_rules *rules)
 {
 	rules->philos = malloc(sizeof(t_philo) * rules->n_philo);

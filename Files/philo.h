@@ -10,6 +10,7 @@
 # include <string.h>
 # include <sys/time.h>
 # include <stdint.h>
+# include <stdbool.h>
 
 typedef enum e_state
 {
@@ -65,4 +66,17 @@ int	ft_atoi(char *str);
 
 // START RULES
 int	start_rules(t_rules *rules,char** argv, int argc);
+
+// START PHILO
+int	start_philos(t_rules *rules);
+int	start_forks(t_rules *rules);
+
+// THREADS
+exec_threads(t_rules *rules);
+
+// TIME
+u_int64_t	get_time(void);
+
+// OPTION
+bool	num_meals_option(t_rules *rules);
 #endif

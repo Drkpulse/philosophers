@@ -7,9 +7,9 @@ int	philosophers(int argc, char **argv)
 
 	if(start_rules(&rules, argv, argc))
 		return (1);
-	//init_philo();
-	//Forks;
-	//Threads
+	start_philos(&rules);
+	start_forks(&rules);
+	exec_threads(&rules);
 	//join_threads
 	//free everything
 	return (0);
