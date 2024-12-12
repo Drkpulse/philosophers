@@ -72,11 +72,21 @@ int	start_philos(t_rules *rules);
 int	start_forks(t_rules *rules);
 
 // THREADS
-exec_threads(t_rules *rules);
+int	exec_threads(t_rules *rules);
+
+// GET
+int	get_state(t_philo *philo);
+int	get_num_philos(t_rules *rules);
 
 // TIME
 u_int64_t	get_time(void);
 
 // OPTION
 bool	num_meals_option(t_rules *rules);
+
+// UPDATES
+void	update_last_meal_time(t_philo *philo);
+
+//FORKS
+int	take_the_forks(t_philo *philo);
 #endif
