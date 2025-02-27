@@ -1,11 +1,5 @@
 #include "philo.h"
 
-int	feed(t_philo *philo)
-{
-	if(take_the_forks(philo))
-		return (1);
-}
-
 void	*routine(void *philo_pointer)
 {
 	t_philo *philo;
@@ -13,18 +7,18 @@ void	*routine(void *philo_pointer)
 	philo = (t_philo *) philo_pointer;
 	update_last_meal_time(philo);
 	if (philo->id % 2 == 0)
-		getsleep(philo->rules->time_eat - 10);
-	while(get_state(philo) != DEAD)
+		ft_yousleep(philo->rules->time_eat);
+	while (get_state(philo) != DEAD && !get_scythe(philo->rules))
 	{
 		if (feed(philo))
 			break;
-		if (get_state(philo) != DEAD)
+		if (get_state(philo) == DEAD && get_scythe(philo->rules))
 			break;
-		if (sleepy(philo))
+		if (ft_sleepy(philo))
 			break;
-		if (get_state(philo) != DEAD)
+		if (get_state(philo) == DEAD && get_scythe(philo->rules))
 			break;
-		if (thinka(philo))
+		if (ft_thinka(philo))
 			break;
 	}
 	return (NULL);
