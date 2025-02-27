@@ -12,7 +12,6 @@ int	start_forks(t_rules *rules)
 		pthread_mutex_init(&rules->forks[i], NULL);
 		i++;
 	}
-
 	i = 0;
 	philos[0].left_f = &rules->forks[0];
 	philos[0].right_f = &rules->forks[rules->n_philo - 1];

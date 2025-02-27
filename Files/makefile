@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 SRCDIR = ../Files
 OBJDIR = obj
 BINDIR = bin
-TARGET = $(BINDIR)/philosophers
+TARGET = philo
 
 SRCFILES = $(wildcard $(SRCDIR)/*.c)
 OBJFILES = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCFILES))
