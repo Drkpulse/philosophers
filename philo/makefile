@@ -1,8 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -pthread
-SRCDIR = ../Files
+SRCDIR = ../philo
 OBJDIR = obj
-BINDIR = bin
 TARGET = philo
 
 SRCFILES = $(wildcard $(SRCDIR)/*.c)
@@ -12,7 +11,7 @@ OBJFILES = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCFILES))
 
 all: $(TARGET)
 
-$(TARGET): $(OBJFILES) | $(BINDIR)
+$(TARGET): $(OBJFILES)
 	@echo "SRCFILES: $(SRCFILES)"
 	@echo "OBJFILES: $(OBJFILES)"
 	$(CC) $(CFLAGS) -o $@ $^
@@ -23,9 +22,6 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
-
-$(BINDIR):
-	mkdir -p $(BINDIR)
 
 clean:
 	rm -rf $(OBJDIR)

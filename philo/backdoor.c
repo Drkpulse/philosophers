@@ -60,7 +60,7 @@ void	*all_full_routine(void *rules_pointer)
 	i = 0;
 	while(i < n_philos && !get_scythe(rules))
 	{
-		ft_yousleep(100);
+		ft_yousleep(1000);
 		if (is_philo_full(rules, &rules->philos[i]) == false)
 			i = 0;
 		i++;
@@ -88,13 +88,13 @@ void	*reaper_schythe(void *rules_pointer)
 	{
 		if(is_philo_dead(&philos[i]) && !get_scythe(rules))
 		{
-			msg_philos(rules);
 			write_msg(rules, philos[i].id, "died");
 			set_scythe(rules, true);
+			msg_philos(rules);
 			break;
 		}
 		i = (i + 1) % n_philos;
-		ft_yousleep(100);
+		usleep(1000);
 	}
 	return (NULL);
 }

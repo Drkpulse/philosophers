@@ -56,17 +56,9 @@ void	write_msg(t_rules *rules, int id, char *msg)
 
 void	ft_yousleep(uint64_t sleep_time)
 {
-	uint64_t start;
-	uint64_t target;
+	u_int64_t	start;
 
 	start = get_time();
-	target = start + sleep_time;
-
-	// Sleep for most of the duration with usleep
-	usleep((sleep_time - 3) * 900);
-
-	// Busy-wait for the remaining time for better precision
-	while (get_time() < target) {
-		usleep(50); // Small yield to reduce CPU usage
-	}
+	while ((get_time() - start) < sleep_time)
+		usleep(500);
 }
