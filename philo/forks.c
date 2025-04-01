@@ -7,6 +7,7 @@ void	drop_left_fork(t_philo *philo)
 
 void	drop_right_fork(t_philo *philo)
 {
+	printf("Philo %d drop a fork\n", philo->id);
 	pthread_mutex_unlock(philo->right_f);
 }
 

@@ -25,11 +25,11 @@ int	feed(t_philo *philo)
 	if(take_the_forks(philo) != 0)
 		return (1);
 	set_philo_state(philo, EATING);
-	write_msg(philo->rules, philo->id, "is eating");
 	update_last_meal_time(philo);
+	write_msg(philo->rules, philo->id, "is eating");
 	ft_yousleep(get_time_eat(philo->rules));
 	update_meals_eaten(philo);
-	//printf("Philosopher %d last ate at %lu\n", philo->id, get_last_meal_time(philo) - get_time_start(philo->rules));
+	printf("Philosopher %d last ate at %lu\n", philo->id, get_last_meal_time(philo) - get_time_start(philo->rules));
 	//printf("Philosopher %d has eaten %d meals\n", philo->id, get_meals_eaten(philo));
 	drop_right_fork(philo);
 	drop_left_fork(philo);
