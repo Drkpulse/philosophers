@@ -8,6 +8,7 @@ bool	is_philo_full(t_rules *rules, t_philo *philo)
 	isfull = false;
 	if(get_meals_eaten(philo) >= rules->num_eat)
 	{
+		printf("Philo %d: as eaten %d/%d\n",philo->id, philo->meals_eaten, rules->num_eat);
 		isfull = true;
 		set_philo_state(philo, FULL);
 	}
@@ -60,7 +61,7 @@ void	*all_full_routine(void *rules_pointer)
 	i = 0;
 	while(i < n_philos && !get_scythe(rules))
 	{
-		ft_yousleep(1000);
+		ft_yousleep(100);
 		if (is_philo_full(rules, &rules->philos[i]) == false)
 			i = 0;
 		i++;

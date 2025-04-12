@@ -82,7 +82,8 @@ int	start_rules(t_rules *rules,char** argv, int argc)
 	rules->time_sleep= (uint64_t) ft_atoi(argv[4]);
 	rules->num_eat = -1;
 	if(argc == 6)
-		rules->num_eat = atoi(argv[5]);
+		rules->num_eat = ft_atoi(argv[5]);
+	printf("num eat %d\n", rules->num_eat);
 	mutex_init_rules(rules);
 	return (malloc_rules(rules));
 }
