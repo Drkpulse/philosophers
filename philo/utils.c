@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 17:00:13 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:22:03 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	num_meals_option(t_rules *rules)
 {
-	if(rules->num_eat > 0)
+	if (rules->num_eat > 0)
 		return (true);
 	return (false);
 }
@@ -34,7 +34,7 @@ void	janitor(t_rules *rules)
 
 	n_philos = get_num_philos(rules);
 	i = 0;
-	while(i < n_philos)
+	while (i < n_philos)
 	{
 		pthread_mutex_destroy(&rules->forks[i]);
 		pthread_mutex_destroy(&rules->philos[i].mut_state);

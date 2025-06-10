@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   backdoor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 17:00:23 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:05:19 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	is_philo_full(t_rules *rules, t_philo *philo)
 	bool	isfull;
 
 	isfull = false;
-	if(get_meals_eaten(philo) >= rules->num_eat)
+	if (get_meals_eaten(philo) >= rules->num_eat)
 	{
 		isfull = true;
 		set_philo_state(philo, FULL);
@@ -32,7 +32,7 @@ bool	is_philo_dead(t_philo *philo)
 
 	rules = philo->rules;
 	isdead = false;
-	if(get_time() - get_last_meal_time(philo) > get_time_death(rules)
+	if (get_time() - get_last_meal_time(philo) > get_time_death(rules)
 		&& get_state(philo) != EATING)
 	{
 		isdead = true;
@@ -50,7 +50,7 @@ void	msg_philos(t_rules *rules)
 	philos = rules->philos;
 	n_philos = get_num_philos(rules);
 	i = 0;
-	while ( i < n_philos)
+	while (i < n_philos)
 	{
 		set_philo_state(&philos[i], DEAD);
 		i++;
@@ -66,7 +66,7 @@ void	*all_full_routine(void *rules_pointer)
 	rules = (t_rules *)rules_pointer;
 	n_philos = get_num_philos(rules);
 	i = 0;
-	while(i < n_philos && !get_scythe(rules))
+	while (i < n_philos && !get_scythe(rules))
 	{
 		ft_yousleep(100);
 		if (is_philo_full(rules, &rules->philos[i]) == false)
@@ -94,12 +94,12 @@ void	*reaper_schythe(void *rules_pointer)
 	i = 0;
 	while (i < rules->n_philo && !get_scythe(rules))
 	{
-		if(is_philo_dead(&philos[i]) && !get_scythe(rules))
+		if (is_philo_dead(&philos[i]) && !get_scythe(rules))
 		{
 			write_msg(rules, philos[i].id, "died");
 			set_scythe(rules, true);
 			msg_philos(rules);
-			break;
+			break ;
 		}
 		i = (i + 1) % n_philos;
 		usleep(1000);

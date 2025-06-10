@@ -27,6 +27,6 @@ clean:
 	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -rf $(BINDIR)
+	rm -rf $(TARGET)
 
 re: fclean all

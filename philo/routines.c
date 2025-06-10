@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 16:59:38 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:16:06 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*routine(void *philo_pointer)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *) philo_pointer;
 	update_last_meal_time(philo);
@@ -23,15 +23,15 @@ void	*routine(void *philo_pointer)
 	while (get_state(philo) != DEAD)
 	{
 		if (feed(philo) != 0)
-			break;
-		if (get_state(philo) == DEAD )
-			break;
-		if (ft_sleepy(philo) != 0)
-			break;
+			break ;
 		if (get_state(philo) == DEAD)
-			break;
+			break ;
+		if (ft_sleepy(philo) != 0)
+			break ;
+		if (get_state(philo) == DEAD)
+			break ;
 		if (ft_thinka(philo) != 0)
-			break;
+			break ;
 	}
 	return (NULL);
 }

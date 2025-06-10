@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mood_swings.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 16:59:23 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:11:38 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_sleepy(t_philo *philo)
 
 int	feed(t_philo *philo)
 {
-	if(take_the_forks(philo) != 0)
+	if (take_the_forks(philo) != 0)
 		return (1);
 	set_philo_state(philo, EATING);
 	update_last_meal_time(philo);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 16:58:56 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:06:18 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_num_philos(t_rules *rules)
 
 int	get_state(t_philo *philo)
 {
-	t_state state;
+	t_state	state;
 
 	pthread_mutex_lock(&philo->mut_state);
 	state = philo->state;

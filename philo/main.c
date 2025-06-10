@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 16:59:18 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:11:20 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	philosophers(int argc, char **argv)
 {
-	t_rules rules;
+	t_rules	rules;
 
-	if(start_rules(&rules, argv, argc))
+	if (start_rules(&rules, argv, argc))
 		return (1);
 	start_philos(&rules);
 	start_forks(&rules);
@@ -26,10 +26,10 @@ int	philosophers(int argc, char **argv)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (check_input(argc, argv))
-		return(bad_input());
+		return (bad_input());
 	if (philosophers(argc, argv))
 		return (1);
 	return (0);

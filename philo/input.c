@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 16:59:10 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:10:33 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	bad_input()
+int	bad_input(void)
 {
 	printf("INPUT is Invalid\n");
 	printf("./philo NB_Philo T_Die T_Eat T_Sleep (Num_Eat)\n");
@@ -22,21 +22,21 @@ int	bad_input()
 	return (1);
 }
 
-int	is_valid_input (int argc, char **argv)
+int	is_valid_input(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
-	if(argc == 6 && ft_atoi(argv[5]) <= 0)
+	if (argc == 6 && ft_atoi(argv[5]) <= 0)
 		return (1);
-	if(ft_atoi(argv[i]) > 200 && ft_atoi(argv[i]) < 1)
+	if (ft_atoi(argv[i]) > 200 && ft_atoi(argv[i]) < 1)
 		return (1);
 	while (++i < 5)
 	{
-		if(ft_atoi(argv[i]) < 60)
+		if (ft_atoi(argv[i]) < 60)
 			return (1);
 	}
-	return(0);
+	return (0);
 }
 
 int	is_input_number(int argc, char **argv)
@@ -45,12 +45,12 @@ int	is_input_number(int argc, char **argv)
 	int	k;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		k = 0;
-		while(argv[i][k] != '\0')
+		while (argv[i][k] != '\0')
 		{
-			if(argv[i][k] > '9' || '0' > argv[i][k])
+			if (argv[i][k] > '9' || '0' > argv[i][k])
 				return (1);
 			k++;
 		}
@@ -87,11 +87,11 @@ int	ft_atoi(char *str)
 
 int	check_input(int argc, char **argv)
 {
-	if(argc > 6 || argc < 5)
+	if (argc > 6 || argc < 5)
 		return (1);
-	if(is_input_number(argc, argv))
+	if (is_input_number(argc, argv))
 		return (1);
-	if(is_valid_input(argc, argv))
+	if (is_valid_input(argc, argv))
 		return (1);
 	return (0);
 }

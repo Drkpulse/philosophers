@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 16:59:03 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:08:37 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	start_forks(t_rules *rules)
 
 	i = 0;
 	philos = rules->philos;
-	while(i < rules->n_philo)
+	while (i < rules->n_philo)
 	{
 		pthread_mutex_init(&rules->forks[i], NULL);
 		i++;
@@ -44,7 +44,7 @@ int	start_philos(t_rules *rules)
 
 	i = 0;
 	philos = rules->philos;
-	while(i < rules->n_philo)
+	while (i < rules->n_philo)
 	{
 		philos[i].id = i + 1;
 		philos[i].rules = rules;
@@ -62,16 +62,17 @@ int	start_philos(t_rules *rules)
 int	malloc_rules(t_rules *rules)
 {
 	rules->philos = malloc(sizeof(t_philo) * rules->n_philo);
-	if(rules->philos == NULL)
+	if (rules->philos == NULL)
 		return (1);
 	rules->forks = malloc(sizeof(pthread_mutex_t) * rules->n_philo);
-	if(rules->forks == NULL)
-		return (free(rules->philos),(1));
+	if (rules->forks == NULL)
+		return (free(rules->philos), (1));
 	rules->philo_threads = malloc(sizeof(pthread_t) * rules->n_philo);
-	if(rules->philo_threads == NULL)
+	if (rules->philo_threads == NULL)
 		return (free(rules->philos), free(rules->forks), (1));
 	return (0);
 }
+
 void	mutex_init_rules(t_rules *rules)
 {
 	pthread_mutex_init(&rules->mut_time_eat, NULL);
@@ -83,17 +84,17 @@ void	mutex_init_rules(t_rules *rules)
 	pthread_mutex_init(&rules->mut_scythe, NULL);
 }
 
-int	start_rules(t_rules *rules,char** argv, int argc)
+int	start_rules(t_rules *rules, char **argv, int argc)
 {
 	rules->n_philo = ft_atoi(argv[1]);
 	rules->num_philo_full = 0;
 	rules->scythe = false;
 	rules->time_start = get_time();
 	rules->time_death = (uint64_t) ft_atoi(argv[2]);
-	rules->time_eat= (uint64_t) ft_atoi(argv[3]);
-	rules->time_sleep= (uint64_t) ft_atoi(argv[4]);
+	rules->time_eat = (uint64_t) ft_atoi(argv[3]);
+	rules->time_sleep = (uint64_t) ft_atoi(argv[4]);
 	rules->num_eat = -1;
-	if(argc == 6)
+	if (argc == 6)
 		rules->num_eat = ft_atoi(argv[5]);
 	printf("num eat %d\n", rules->num_eat);
 	mutex_init_rules(rules);
