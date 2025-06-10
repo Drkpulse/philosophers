@@ -23,6 +23,14 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
+helgrind:
+	@valgrind --quiet -v --tool=helgrind ./$(TARGET) $(ARGS)
+sanitize: SANITIZE = -fsanitize=thread
+sanitize: re
+
+valgrind:
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(TARGET) $(ARGS)
+
 clean:
 	rm -rf $(OBJDIR)
 

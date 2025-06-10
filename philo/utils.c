@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 17:22:03 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:50:43 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	write_msg(t_rules *rules, int id, char *msg)
 
 	time = get_time() - get_time_start(rules);
 	pthread_mutex_lock(&rules->mut_print);
-	if (!rules->scythe)
+	if (!get_scythe(rules))
 		printf("%lu %d %s\n", time, id, msg);
 	pthread_mutex_unlock(&rules->mut_print);
 }
