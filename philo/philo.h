@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
+/*   Updated: 2025/06/10 16:59:33 by joseferr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
@@ -8,6 +18,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <string.h>
+# include <time.h>
 # include <sys/time.h>
 # include <stdint.h>
 # include <stdbool.h>

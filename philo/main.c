@@ -1,5 +1,16 @@
-#include "philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
+/*   Updated: 2025/06/10 16:59:18 by joseferr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "philo.h"
 
 int	philosophers(int argc, char **argv)
 {
@@ -7,17 +18,11 @@ int	philosophers(int argc, char **argv)
 
 	if(start_rules(&rules, argv, argc))
 		return (1);
-	//printf("Rules started\n");
 	start_philos(&rules);
-	//printf("Philos started\n");
 	start_forks(&rules);
-	//printf("Forks started\n");
 	exec_threads(&rules);
-	//printf("Threads started\n");
 	ft_threads_join(&rules);
-	//printf("Threads joined\n");
 	janitor(&rules);
-	//printf("Janitor done\n");
 	return (0);
 }
 
@@ -25,7 +30,6 @@ int main(int argc, char **argv)
 {
 	if (check_input(argc, argv))
 		return(bad_input());
-	//printf("INPUT is valid\n");
 	if (philosophers(argc, argv))
 		return (1);
 	return (0);

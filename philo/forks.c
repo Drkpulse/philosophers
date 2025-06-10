@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   forks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
+/*   Updated: 2025/06/10 16:58:50 by joseferr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	drop_left_fork(t_philo *philo)
@@ -7,7 +19,6 @@ void	drop_left_fork(t_philo *philo)
 
 void	drop_right_fork(t_philo *philo)
 {
-	//printf("Philo %d drop a fork\n", philo->id);
 	pthread_mutex_unlock(philo->right_f);
 }
 

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   backdoor.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
+/*   Updated: 2025/06/10 17:00:23 by joseferr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
@@ -8,7 +19,6 @@ bool	is_philo_full(t_rules *rules, t_philo *philo)
 	isfull = false;
 	if(get_meals_eaten(philo) >= rules->num_eat)
 	{
-		printf("Philo %d: as eaten %d/%d\n",philo->id, philo->meals_eaten, rules->num_eat);
 		isfull = true;
 		set_philo_state(philo, FULL);
 	}
@@ -25,9 +35,6 @@ bool	is_philo_dead(t_philo *philo)
 	if(get_time() - get_last_meal_time(philo) > get_time_death(rules)
 		&& get_state(philo) != EATING)
 	{
-		//printf("philo %d died\n", philo->id);
-		//printf("time %lu\n", get_time() - get_last_meal_time(philo));
-		//printf("time death %lu\n", get_time_death(rules));
 		isdead = true;
 		set_philo_state(philo, DEAD);
 	}
