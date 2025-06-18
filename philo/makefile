@@ -1,17 +1,21 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -pthread
-SRCDIR = ../philo
+SRCDIR = .
 OBJDIR = obj
-TARGET = philo
+NAME = philo
 
-SRCFILES = $(wildcard $(SRCDIR)/*.c)
-OBJFILES = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCFILES))
+# List all source files explicitly
+SRC = backdoor.c forks.c get.c init.c input.c main.c mood_swings.c \
+      routines.c set.c threads.c time.c update.c utils.c
+
+# Generate object file names
+OBJFILES = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 .PHONY: all clean fclean re
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(OBJFILES)
+$(NAME): $(OBJFILES)
 	@echo "SRCFILES: $(SRCFILES)"
 	@echo "OBJFILES: $(OBJFILES)"
 	$(CC) $(CFLAGS) -o $@ $^
@@ -24,17 +28,17 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 helgrind:
-	@valgrind --quiet -v --tool=helgrind ./$(TARGET) $(ARGS)
+	@valgrind --quiet -v --tool=helgrind ./$(NAME) $(ARGS)
 sanitize: SANITIZE = -fsanitize=thread
 sanitize: re
 
 valgrind:
-	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(TARGET) $(ARGS)
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) $(ARGS)
 
 clean:
 	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -rf $(TARGET)
+	rm -rf $(NAME)
 
 re: fclean all
