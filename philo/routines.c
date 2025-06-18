@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 17:16:06 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:19:31 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,12 @@ void	*routine(void *philo_pointer)
 			break ;
 	}
 	return (NULL);
+}
+
+int	solo_philo(t_philo *philo)
+{
+	take_left_fork(philo);
+	ft_yousleep(get_time_death(philo->rules));
+	set_philo_state(philo, DEAD);
+	return (1);
 }

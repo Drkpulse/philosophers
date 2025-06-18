@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   backdoor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 17:05:19 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:23:11 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,24 @@ void	msg_philos(t_rules *rules)
 	}
 }
 
-void	*all_full_routine(void *rules_pointer)
+void *all_full_routine(void *rules_pointer)
 {
 	t_rules	*rules;
 	int		n_philos;
-	int		i;
+	bool	all_full;
 
 	rules = (t_rules *)rules_pointer;
 	n_philos = get_num_philos(rules);
-	i = 0;
-	while (i < n_philos && !get_scythe(rules))
+	while (!get_scythe(rules))
 	{
+		all_full = are_they_full(rules, n_philos);
+		if (all_full && !get_scythe(rules))
+		{
+			set_scythe(rules, true);
+			msg_philos(rules);
+			break;
+		}
 		ft_yousleep(100);
-		if (is_philo_full(rules, &rules->philos[i]) == false)
-			i = 0;
-		i++;
-	}
-	if (!get_scythe(rules))
-	{
-		set_scythe(rules, true);
-		msg_philos(rules);
 	}
 	return (NULL);
 }

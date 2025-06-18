@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/10 17:15:18 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:23:41 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int			ft_threads_join(t_rules *rules);
 void		*routine(void *philo_pointer);
 void		*reaper_schythe(void *rules_pointer);
 void		*all_full_routine(void *rules_pointer);
+bool		are_they_full(t_rules *rules, int n_philos);
+bool	is_philo_full(t_rules *rules, t_philo *philo);
 
 // SOLO
 int			solo_philo(t_philo *philo);
