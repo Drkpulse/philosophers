@@ -6,7 +6,7 @@
 /*   By: joseferr <joseferr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:11:45 by joseferr          #+#    #+#             */
-/*   Updated: 2025/06/18 22:23:11 by joseferr         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:44:10 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	msg_philos(t_rules *rules)
 	}
 }
 
-void *all_full_routine(void *rules_pointer)
+void	*all_full_routine(void *rules_pointer)
 {
 	t_rules	*rules;
 	int		n_philos;
@@ -72,7 +72,7 @@ void *all_full_routine(void *rules_pointer)
 		{
 			set_scythe(rules, true);
 			msg_philos(rules);
-			break;
+			break ;
 		}
 		ft_yousleep(100);
 	}
