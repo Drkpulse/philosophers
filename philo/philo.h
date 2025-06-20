@@ -95,7 +95,7 @@ void		*routine(void *philo_pointer);
 void		*reaper_schythe(void *rules_pointer);
 void		*all_full_routine(void *rules_pointer);
 bool		are_they_full(t_rules *rules, int n_philos);
-bool	is_philo_full(t_rules *rules, t_philo *philo);
+bool		is_philo_full(t_rules *rules, t_philo *philo);
 
 // SOLO
 int			solo_philo(t_philo *philo);
@@ -121,7 +121,7 @@ void		set_scythe(t_rules *rules, bool set);
 
 // TIME
 uint64_t	get_time(void);
-void		ft_yousleep(uint64_t sleep_time);
+void		ft_yousleep(uint64_t sleep_time, t_rules *rules);
 uint64_t	get_time_death(t_rules *rules);
 uint64_t	get_time_eat(t_rules *rules);
 

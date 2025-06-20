@@ -19,7 +19,7 @@ void	*routine(void *philo_pointer)
 	philo = (t_philo *) philo_pointer;
 	update_last_meal_time(philo);
 	if (philo->id % 2 == 0)
-		ft_yousleep(philo->rules->time_eat - 10);
+		ft_yousleep(philo->rules->time_eat - 10, philo->rules);
 	while (get_state(philo) != DEAD)
 	{
 		if (feed(philo) != 0)
@@ -39,7 +39,7 @@ void	*routine(void *philo_pointer)
 int	solo_philo(t_philo *philo)
 {
 	take_left_fork(philo);
-	ft_yousleep(get_time_death(philo->rules));
+	ft_yousleep(get_time_death(philo->rules), philo->rules);
 	set_philo_state(philo, DEAD);
 	drop_left_fork(philo);
 	return (1);

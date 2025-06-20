@@ -27,7 +27,7 @@ int	ft_sleepy(t_philo *philo)
 	if (get_state(philo) == DEAD)
 		return (1);
 	write_msg(philo->rules, philo->id, "is sleeping");
-	ft_yousleep(get_time_sleep(philo->rules));
+	ft_yousleep(get_time_sleep(philo->rules), philo->rules);
 	return (0);
 }
 
@@ -38,7 +38,7 @@ int	feed(t_philo *philo)
 	set_philo_state(philo, EATING);
 	update_last_meal_time(philo);
 	write_msg(philo->rules, philo->id, "is eating");
-	ft_yousleep(get_time_eat(philo->rules));
+	ft_yousleep(get_time_eat(philo->rules), philo->rules);
 	update_meals_eaten(philo);
 	drop_right_fork(philo);
 	drop_left_fork(philo);

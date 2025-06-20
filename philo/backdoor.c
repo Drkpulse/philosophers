@@ -74,7 +74,7 @@ void	*all_full_routine(void *rules_pointer)
 			msg_philos(rules);
 			break ;
 		}
-		ft_yousleep(100);
+		ft_yousleep(100, rules);
 	}
 	return (NULL);
 }
@@ -100,7 +100,7 @@ void	*reaper_schythe(void *rules_pointer)
 			break ;
 		}
 		i = (i + 1) % n_philos;
-		usleep(1000);
+		usleep(100);
 	}
 	return (NULL);
 }

@@ -57,13 +57,17 @@ void	write_msg(t_rules *rules, int id, char *msg)
 	pthread_mutex_unlock(&rules->mut_print);
 }
 
-void	ft_yousleep(uint64_t sleep_time)
+void	ft_yousleep(uint64_t sleep_time, t_rules *rules)
 {
 	u_int64_t	start;
 
 	start = get_time();
 	while ((get_time() - start) < sleep_time)
+	{
 		usleep(500);
+		if (get_scythe(rules))
+			break ;
+	}
 }
 
 bool	are_they_full(t_rules *rules, int n_philos)
